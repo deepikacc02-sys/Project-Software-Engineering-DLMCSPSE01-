@@ -1,1 +1,457 @@
+/* --- Design tokens --- */
+:root{
+  --bg: #5A358A; /* Darker Purple */
+  --bg2: #7D51B4; /* Lighter Dark Purple */
+  --ink: #0f1a2b;
+  --muted: #5c6b80;
+  --card: #ffffff;
+  --chip: #e9e2f4; /* Light Lilac */
+  --chip-ink:#442c74; /* Dark Purple Ink */
+  --accent:#ff8c00; /* BRIGHT ORANGE ACCENT (Used only for the Title/Highlight) */
+  --btn:#7D51B4; /* Medium Purple Button */
+  --btn-ink:#fff;
+  --shadow: 0 8px 24px rgba(0,0,0,.08);
+}
 
+*{ box-sizing: border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji", "Segoe UI Symbol";
+  color:var(--ink);
+  background:#f3f0f7; /* NEW: Very Light Purple/Lilac background */
+  line-height:1.5;
+}
+
+.container{
+  width:min(1100px, 92%);
+  margin-inline:auto;
+}
+.center{ text-align:center; }
+.small-gap{ margin-top:.35rem; }
+.muted{ color:var(--muted); }
+
+.btn{
+  border:0;
+  padding:.7rem 1rem;
+  border-radius:.65rem;
+  cursor:pointer;
+  font-weight:600;
+}
+.btn:active{ transform:translateY(1px); }
+.btn.solid{
+  background:var(--btn);
+  color:var(--btn-ink);
+}
+.btn.ghost{
+  background:#efe6ff; /* Very Light Purple */
+  color:#442c74; /* Dark Purple Text */
+}
+
+/* Header */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:#fff;
+  border-bottom:1px solid #e9eef6;
+}
+.nav-wrap{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  padding:.9rem 0;
+}
+.brand{
+  display:flex; align-items:center; gap:.5rem;
+  font-weight:800; letter-spacing:.2px;
+}
+.brand-badge{ font-size:1.35rem; }
+.brand-name{ font-size:1.2rem; }
+
+.main-nav{
+  margin-left:2rem;
+  display:flex;
+  gap:1rem;
+  flex:1;
+}
+.main-nav a{
+  text-decoration:none;
+  color:var(--ink);
+  padding:.35rem .5rem;
+  border-radius:.5rem;
+}
+.main-nav a:hover{ background:#f0f5ff; }
+
+/* Hero */
+/* NEW STYLING: Full-width, centered content, focus on search */
+.hero{
+  /* background: linear-gradient(160deg, var(--bg), var(--bg2)); */
+  background: var(--bg); /* Solid Dark Purple */
+  color:#fff;
+  padding: 4.5rem 0 3.5rem; /* Increased padding */
+  text-align: center;
+}
+.hero-grid{
+  /* Removed grid structure for a simpler, stacked layout */
+  display: block; 
+}
+.hero-copy{
+  max-width: 700px; /* Constrain text width */
+  margin-inline: auto;
+}
+.hero-copy h1{
+  font-size: clamp(2.5rem, 4.5vw, 3.8rem); /* Larger font */
+  margin:0 0 .5rem;
+  color: var(--accent); /* NEW: Make the entire H1 orange */
+}
+.hero-copy .accent{ color:var(--accent); }
+.lead{ font-size:1.15rem; opacity:.95; max-width: 550px; margin-inline: auto; }
+
+.search-bar{
+  margin-top:2rem; /* More space above search bar */
+  background:#fff;
+  display:flex; gap:.6rem; align-items:center;
+  padding:.6rem; border-radius:.9rem;
+  box-shadow: var(--shadow);
+  max-width: 600px; /* Constrain search bar width */
+  margin-inline: auto; /* Center the search bar */
+}
+.search-bar .magnify{ margin-left:.4rem; font-size:1.1rem; }
+.search-bar input, .search-bar select{
+  border:0; outline:0; background:transparent;
+  padding:.6rem .7rem; border-radius:.6rem;
+  font-size:1rem;
+}
+.search-bar select{
+  background:#efe6ff; /* Very Light Purple */
+}
+.search-bar input{ flex:1; }
+
+.hero-gallery{
+  /* Removed entirely from layout but kept the class for safety */
+  display:none; 
+}
+
+
+/* Categories */
+.section-title{
+  margin:2rem 0 .4rem;
+  font-size:1.6rem;
+}
+.categories .chip-row{
+  margin-top:1rem;
+  display:flex; gap:.6rem; flex-wrap:wrap;
+}
+.chip{
+  background:var(--chip);
+  color:var(--chip-ink);
+  border:1px solid #dbe6ff;
+  padding:.5rem .8rem;
+  border-radius:999px;
+  cursor:pointer;
+  font-weight:600;
+}
+.chip.active{
+  background:#5A358A; color:#fff; border-color:#5A358A; /* Darker Purple Active Chip */
+}
+
+/* Cards */
+.cards-header{
+  display:flex; align-items:center; justify-content:space-between;
+}
+.view-all{ color:#5A358A; text-decoration:none; font-weight:600; } /* Purple Link */
+
+.card-grid{
+  margin:1rem 0 0;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:18px;
+}
+.card{
+  background:var(--card);
+  border-radius:14px;
+  box-shadow: var(--shadow);
+  overflow:hidden;
+  display:flex; flex-direction:column;
+}
+.card .thumb{
+  height:170px; width:100%; object-fit:cover; display:block;
+}
+.card .pad{ padding:14px; }
+.card .teacher{
+  display:flex; align-items:center; gap:.6rem; margin-top:.3rem;
+}
+.avatar{
+  width:34px; height:34px; border-radius:50%;
+  background:#d9e5ff; display:grid; place-items:center; font-weight:700;
+}
+.kicker{ color:var(--muted); font-size:.88rem; }
+.card h3{ margin:.4rem 0 .2rem; font-size:1.05rem; }
+.meta{
+  margin:.4rem 0 .6rem;
+  display:flex; gap:12px; flex-wrap:wrap; color:#666f80; font-size:.9rem;
+}
+.meta span{ display:inline-flex; align-items:center; gap:6px; }
+.badge{
+  display:inline-block; padding:.2rem .5rem; border-radius:999px;
+  background:#efe6ff; /* NEW: Very Light Purple Badge */
+  color:#442c74; /* NEW: Dark Purple Text */
+  font-size:.78rem; font-weight:700;
+}
+.card .cta{ margin: .2rem 14px 14px; }
+.card .btn{ width:100%; justify-content:center; }
+
+/* How it works -> Your Skills & Bookings */
+.how-grid{
+  margin-top:1rem;
+  display:grid; grid-template-columns: 1fr 1fr; gap:32px;
+}
+.how h3{ margin:.4rem 0 1rem; }
+/* Applied Card style to the steps for visual consistency */
+.steps{
+  background:#fff; border:1px solid #edf1f7; border-radius:14px; padding:18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.05); /* Lighter shadow */
+}
+.steps li + li{ margin-top:.9rem; }
+.steps h4{ margin:.1rem 0; }
+
+/* Activity Card Styling for Bookings */
+.activity-card {
+  background: linear-gradient(135deg, var(--bg), #9e7bc9); /* Purple Gradient */
+  color: #fff;
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: var(--shadow);
+  height: 100%; /* Match height of peer column */
+}
+.activity-card h3 {
+  color: #fff;
+  margin: 0 0 12px;
+  font-size: 1.4rem;
+}
+#bookingsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.booking-item {
+  background: rgba(255, 255, 255, 0.15); /* Light translucent background */
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border-left: 5px solid var(--accent); /* Orange accent for highlight */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.booking-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.booking-item h4 {
+  margin: 0 0 4px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+}
+.booking-item .details {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+.booking-item .details span {
+  color: var(--accent);
+  font-weight: 600;
+}
+.no-bookings {
+    text-align: center;
+    padding: 20px 0;
+    opacity: 0.9;
+}
+
+/* NEW: CTA Card to replace old teacher steps */
+.cta-card{
+    background: var(--bg2); /* Lighter Dark Purple */
+    color: #fff;
+    padding: 30px 18px; /* Increased padding for impact */
+    height: 100%; /* Match peer height */
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.cta-card h3 {
+    color: #fff;
+    margin: .4rem 0 1rem;
+    font-size: 1.4rem;
+}
+.cta-card p {
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+.cta-card .btn.solid {
+    background: #fff; /* White button for contrast */
+    color: var(--bg); /* Dark Purple text */
+}
+
+/* Footer */
+.site-footer{
+  margin-top:2.6rem;
+  background:var(--bg); /* UPDATED: Changed footer background to Dark Purple */
+  color:#dbe5ff;
+}
+.footer-grid{
+  display:grid; grid-template-columns: 1.3fr .7fr .7fr; gap:22px;
+  padding:32px 0;
+}
+.foot-brand p{ margin:.4rem 0 1rem; }
+
+/* 🌟 FIX: Change color of the descriptive text in the footer (which has class .muted) */
+.foot-brand p.muted {
+    color: #c9d6ff; /* A light purple color to ensure it is visible against the dark background */
+}
+
+.socials a{ margin-right:.6rem; font-size:1.1rem; }
+.foot-links h4{ margin:.2rem 0 .6rem; }
+.foot-links a{
+  display:block; color:#c9d6ff; text-decoration:none; margin:.25rem 0;
+}
+.sub-footer{
+  border-top:1px solid #1f2a44;
+  padding:12px 0; text-align:center; color:#9fb0d9;
+}
+
+/* ===== Modal (Base Style) ===== */
+.modal{
+  display:none; /* toggled via JS to flex */
+  position:fixed; inset:0;
+  z-index:1000;
+  background: rgba(0,0,0,.5);
+  align-items:center; justify-content:center;
+  padding: 18px;
+}
+.modal-content{
+  background:#fff;
+  width: min(440px, 100%);
+  border-radius: 12px;
+  padding: 10px 10px 8px;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+  animation: modalIn .18s ease-out;
+}
+@keyframes modalIn{
+  from { opacity:0; transform: translateY(8px) scale(.98); }
+  to   { opacity:1; transform: translateY(0) scale(1); }
+}
+
+/* NEW: Optimized Styles for Community Guidelines Modal (Wider, Tighter, Cleaner) */
+#guidelinesModal .modal-content {
+    width: min(400px, 100%);
+    padding: 12px 20px 10px;
+}
+
+/* Reduces font size and line-height for content paragraphs and list items */
+#guidelinesModal .guidelines-content p,
+#guidelinesModal .guidelines-content li {
+    font-size: 0.95rem; 
+    line-height: 1.4;
+}
+
+/* Reduces the vertical margin and size for headings */
+#guidelinesModal .guidelines-content h3{
+    margin: .6rem 0 .2rem;
+    font-size: 1.1rem;
+    color: var(--bg);
+    font-weight: 700;
+}
+
+#guidelinesModal .guidelines-content ul{
+    margin: .2rem 0 1rem 0; 
+    padding-left: 18px; 
+}
+
+#guidelinesModal .guidelines-content li{
+    margin: 0;
+    padding-bottom: 4px; 
+}
+/* END NEW: Optimized Guidelines styles */
+
+
+.modal-content h2{
+  margin: 0 0 10px;
+  font-size: 1.3rem;
+}
+.close{
+  position:absolute; right:12px; top:10px;
+  border:none; background:transparent;
+  font-size: 22px; line-height: 1; cursor:pointer;
+  color:#333;
+}
+.skill{ margin:-4px 0 12px; font-weight:500; }
+.skill .muted{ margin-left:.35rem; font-weight:300; }
+
+/* FIX: Apply form layout to all modal forms for clean stacking */
+#bookingForm, #postSkillForm, #removeSkillForm {
+  display:flex; flex-direction:column;
+}
+
+#bookingForm label, #postSkillForm label, #removeSkillForm label {
+  margin-top: 10px; font-weight:700; font-size:.95rem;
+}
+
+#bookingForm input,
+#bookingForm select,
+#bookingForm textarea,
+#postSkillForm input,
+#postSkillForm select,
+#postSkillForm textarea,
+#removeSkillForm input,
+#removeSkillForm select {
+  padding:10px; 
+  margin-top:6px; 
+  margin-bottom: 4px; /* Added spacing below inputs for visual separation */
+  border:1px solid #cfd8e3; 
+  border-radius:8px;
+  font-size:14px; 
+  outline: none;
+}
+
+#bookingForm textarea, #postSkillForm textarea { resize:none; height:78px; }
+
+.btn-group{
+  display:flex; justify-content:flex-end; gap:10px; margin-top:14px;
+}
+.cancel-btn{
+  background: transparent; border:none; color:#333; font-size:14px; cursor:pointer;
+}
+.submit-btn{
+  background:#5A358A; color:#fff; border:none; padding:10px 16px; border-radius:8px; cursor:pointer; font-weight:700; /* Purple Submit Button */
+}
+.submit-btn:hover{ background:#442c74; }
+
+/* Success */
+.hidden{ display:none; text-align:center; }
+#successMessage h3{ color:#5A358A; margin:.2rem 0 .4rem; } /* Purple Success Message */
+
+/* Responsiveness */
+@media (max-width: 980px){
+  /* Hero changes for mobile */
+  .hero{ padding: 3rem 0 2rem; }
+  .hero-copy h1{ font-size: clamp(2rem, 8vw, 3rem); }
+
+  .hero-grid{ grid-template-columns: 1fr; }
+  .hero-gallery{ order:-1; grid-auto-rows:140px; }
+  .main-nav{ display:none; }
+  .card-grid{ grid-template-columns: repeat(2, 1fr); }
+  .footer-grid{ grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 620px){
+  .search-bar{ flex-wrap:wrap; }
+  .card-grid{ grid-template-columns: 1fr; }
+  .how-grid{ grid-template-columns: 1fr; }
+}
