@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Community Skill Sharing</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="assets/favicon.png" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <div class="brand">
+          <span class="brand-name">Community Skill Sharing</span>
+        </div>
+
+        <nav class="main-nav">
+          <a href="#categories">Browse Skills</a>
+          <a href="#" id="teachSkillLink">Add a Skill</a>
+          <a href="#" id="removeSkillLink">Remove a Skill</a>
+          <a href="#your-activity">Skills & Bookings</a>
+        </nav>
+
+        <div class="nav-cta">
+          </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h1>Let's Acknowledge Eachother</h1>
+          <p class="lead">
+            Connect with experts in your community. Explore now.
+          </p>
+
+          <form id="searchForm" class="search-bar" autocomplete="off">
+            <span class="magnify">🔎</span>
+            <input
+              type="search"
+              id="searchInput"
+              placeholder="Find skills to learn"
+              aria-label="Search skills"
+            />
+            <select id="categorySelect" aria-label="Category">
+              <option value="all">Categories</option>
+              <option value="programming">Programming</option>
+              <option value="art">Art & Design</option>
+              <option value="cooking">Cooking</option>
+              <option value="music">Music</option>
+              <option value="fitness">Fitness</option>
+              <option value="languages">Languages</option>
+	      <option value="all">All categories</option>
+            </select>
+            <button class="btn solid" type="submit">Search</button>
+          </form>
+        </div>
+        </div>
+    </section>
+
+    <section id="categories" class="container categories">
+      <h2 class="section-title">Explore Skill Categories</h2>
+
+      <div class="chip-row" id="chipRow">
+        <button class="chip active" data-cat="all">All</button>
+        <button class="chip" data-cat="programming">Programming</button>
+        <button class="chip" data-cat="art">Art &amp; Design</button>
+        <button class="chip" data-cat="cooking">Cooking</button>
+        <button class="chip" data-cat="music">Music</button>
+        <button class="chip" data-cat="fitness">Fitness</button>
+        <button class="chip" data-cat="languages">Languages</button>
+      </div>
+    </section>
+
+    <section class="container cards" aria-labelledby="featuredHeading">
+      <div class="cards-header">
+        <h2 id="featuredHeading" class="section-title">Featured Skills</h2>
+        <a id="viewAllLink" class="view-all" href="#">View All →</a>
+      </div>
+
+      <div id="cardGrid" class="card-grid" role="list">
+        </div>
+    </section>
+
+    <section id="your-activity" class="container how">
+      <h2 class="section-title center">Your Skills & Bookings</h2>
+
+      <div class="how-grid">
+        <div class="how-col">
+          <div class="activity-card">
+              <h3>Your Latest Bookings</h3>
+              
+              <ul id="bookingsList">
+                </ul>
+
+              <div id="noBookingsMessage" class="no-bookings">
+                  You haven't booked any sessions yet. <br>Go explore a skill!
+              </div>
+          </div>
+        </div>
+
+        <div class="how-col">
+          <div class="steps center cta-card">
+              <h3>Ready to Share Your Expertise?</h3>
+              <p>The community needs your knowledge. Post a skill session in minutes!</p>
+              <a href="#" id="teachSkillLink2" class="btn solid">Post Your First Skill</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="foot-brand">
+          <div class="brand">
+            <span class="brand-name">Community Skill Sharing</span>
+          </div>
+          <p class="muted">
+            This community spans over various skills and allow the knowledge seekers to grab the best skills.
+          </p>
+
+        </div>
+
+        <div class="foot-links">
+          <h4>For Learners</h4>
+          <a href="#categories">Browse Skills</a>
+        </div>
+
+        <div class="foot-links">
+          <h4>For Guiders</h4>
+          <a href="#" id="guidelinesLink">Community Guidelines</a>
+        </div>
+      </div>
+
+      <div class="sub-footer">
+        <div class="container">
+          </span> Community Skill Sharing. © <span id="year">
+        </div>
+      </div>
+    </footer>
+
+    <div
+      id="bookingModal"
+      class="modal"
+      aria-hidden="true"
+      role="dialog"
+      aria-label="Book a Session"
+    >
+      <div class="modal-content" role="document">
+        <button class="close" id="modalCloseBtn" aria-label="Close">×</button>
+        <h2>Book a Session</h2>
+
+        <div id="bookingFormContainer">
+          <p><strong>Selected Skill</strong></p>
+          <p class="skill">
+            <span id="modalSkillTitle">C++ Fundamentals</span>
+            <span id="modalSkillTeacher" class="muted">with Asia Benjamin</span>
+          </p>
+
+          <form id="bookingForm" novalidate>
+            <label for="bfName">Your Name</label>
+            <input
+              id="bfName"
+              type="text"
+              name="name"
+              placeholder="Enter your full name"
+              required
+            />
+
+            <label for="bfEmail">Email Address</label>
+            <input
+              id="bfEmail"
+              type="email"
+              name="email"
+              placeholder="your@email.com"
+              required
+            />
+
+            <label for="bfTime">Preferred Time</label>
+            <select id="bfTime" name="time" required>
+              <option value="">Select a time slot</option>
+              <option>Morning (9 AM - 12 PM)</option>
+              <option>Afternoon (1 PM - 5 PM)</option>
+              <option>Evening (6 PM - 9 PM)</option>
+              <option>Weekend</option>
+            </select>
+
+            <label for="bfMsg">Message to Teacher (Optional)</label>
+            <textarea
+              id="bfMsg"
+              name="message"
+              placeholder="Tell the teacher about your experience level or any specific topics you’d like to focus on..."
+            ></textarea>
+
+            <div class="btn-group">
+              <button type="button" class="cancel-btn" id="modalCancelBtn">
+                Cancel
+              </button>
+              <button type="submit" class="submit-btn">
+                Send Booking Request
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div id="successMessage" class="hidden">
+          <h3>Booking Request Sent!</h3>
+          <p>The teacher will contact you soon to confirm the session.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div id="postSkillModal" class="modal" aria-hidden="true" role="dialog" aria-label="Post a Skill to Teach">
+        <div class="modal-content" role="document">
+            <button class="close" id="postModalCloseBtn" aria-label="Close">×</button>
+            <h2>Share Your Skill</h2>
+
+            <form id="postSkillForm" novalidate>
+                <label for="postTitle">Skill Title</label>
+                <input id="postTitle" type="text" placeholder="e.g., Advanced JavaScript Closures" required />
+
+                <label for="postTeacherName">Your Name (for the card)</label>
+                <input id="postTeacherName" type="text" placeholder="Your Name" required />
+                
+                <label for="postCategory">Category</label>
+                <select id="postCategory" required>
+                  <option value="">Select Category</option>
+                  <option value="programming">Programming</option>
+                  <option value="art">Art & Design</option>
+                  <option value="cooking">Cooking</option>
+                  <option value="music">Music</option>
+                  <option value="fitness">Fitness</option>
+                  <option value="languages">Languages</option>
+                  <option value="other">Other</option>
+                </select>
+                
+                <label for="postHours">Duration (e.g., 2 hours)</label>
+                <input id="postHours" type="text" placeholder="e.g., 2 hours" required />
+                
+                <label for="postMode">Session Mode</label>
+                <select id="postMode" required>
+                  <option value="Online">Online</option>
+                  <option value="In-person">In-person</option>
+                </select>
+                
+                <label for="postType">Session Type</label>
+                <select id="postType" required>
+                  <option value="1-on-1">1-on-1</option>
+                  <option value="Group">Group</option>
+                </select>
+
+                <label for="postBlurb">Short Description</label>
+                <textarea id="postBlurb" placeholder="A brief, engaging summary of what you'll teach..." required></textarea>
+
+                <div class="btn-group">
+                    <button type="button" class="cancel-btn" id="postModalCancelBtn">Cancel</button>
+                    <button type="submit" class="submit-btn">Post Skill</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="removeSkillModal" class="modal" aria-hidden="true" role="dialog" aria-label="Remove a Posted Skill">
+      <div class="modal-content" role="document">
+        <button class="close" id="removeModalCloseBtn" aria-label="Close">×</button>
+        <h2>Remove a Skill</h2>
+
+        <form id="removeSkillForm" novalidate>
+            <p class="muted">Select the skill you wish to remove from the community listing.</p>
+
+            <label for="removeSkillSelect">Skill to Remove</label>
+            <select id="removeSkillSelect" required>
+                <option value="">-- Select Your Posted Skill --</option>
+            </select>
+            
+            <label for="removeTeacherName">Your Teacher Name (Confirmation)</label>
+            <input id="removeTeacherName" type="text" placeholder="The name you posted under" required />
+
+            <div class="btn-group">
+                <button type="button" class="cancel-btn" id="removeModalCancelBtn">Cancel</button>
+                <button type="submit" class="submit-btn remove-btn">Remove Skill</button>
+            </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="guidelinesModal" class="modal" aria-hidden="true" role="dialog" aria-label="Community Guidelines">
+        <div class="modal-content" role="document">
+            <button class="close" id="guidelinesModalCloseBtn" aria-label="Close">×</button>
+            <h2>Community Guidelines</h2>
+            
+            <div class="guidelines-content">
+                <p>Welcome to Community Skill Sharing! To ensure a positive, safe, and productive environment for all learners and teachers, please adhere to the following guidelines:</p>
+                
+                <h3>1. Respect and Inclusivity</h3>
+                <ul>
+                    <li>Treat all members with respect, regardless of their skill level, background, or identity.</li>
+                    <li>Do not use hate speech, harassment, or discriminatory language and Maintain professional and courteous communication.</li>
+                </ul>
+
+                <h3>2. Content Standards</h3>
+                <ul>
+                    <li>Only post skills that you are genuinely capable of teaching.</li>
+                    <li>Skills must be legal, safe, and appropriate for all ages. Sessions must remain free of charge. This is a community sharing platform, not a marketplace.</li>
+                </ul>
+
+                <h3>3. Safety and Privacy</h3>
+                <ul>
+                    <li>Do not share personal contact information (except for necessary scheduling) or private details of others.</li>
+                    <li>For in-person sessions, always meet in a public, safe location.</li>
+                </ul>
+
+                <p class="muted center" style="margin-top: 20px;">Failure to comply with these guidelines may result in the removal of your posted skills or access to the platform.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/app.js"></script>
+  </body>
+</html>
